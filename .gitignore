@@ -1,0 +1,11 @@
+# Strapi default .gitignore
+.env
+.tmp
+.cache
+/build
+/dist
+/public/uploads
+package-lock.json
+/node_modules
+.DS_Store
+*.log
