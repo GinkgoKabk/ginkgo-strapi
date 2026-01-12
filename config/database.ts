@@ -4,6 +4,17 @@ import { parse } from 'pg-connection-string';
 export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
+  console.log('----------------------------------------------------------------');
+  console.log('DEBUG: Database Authentication Check');
+  console.log(`DEBUG: DATABASE_CLIENT is set to: "${client}"`);
+  console.log(`DEBUG: DATABASE_URL is present: ${!!env('DATABASE_URL')}`);
+  console.log(`DEBUG: DATABASE_HOST is present: ${!!env('DATABASE_HOST')}`);
+  if (env('DATABASE_URL')) {
+    const config = parse(env('DATABASE_URL'));
+    console.log(`DEBUG: Parsed Host from URL: "${config.host}"`);
+  }
+  console.log('----------------------------------------------------------------');
+
   const connections = {
     mysql: {
       connection: {
